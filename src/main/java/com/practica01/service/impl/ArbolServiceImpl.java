@@ -18,12 +18,7 @@ public class ArbolServiceImpl
     @Override
     @Transactional(readOnly=true)
     public List<Arbol> getArboles(boolean activos) {
-        var listado = arbolDao.findAll();
-        
-        if(activos){ //si solo quiero los activos
-            listado.removeIf(c -> !c.isActivo());
-        }
-        
+        var listado = arbolDao.findAll();        
         return listado;
     }
 

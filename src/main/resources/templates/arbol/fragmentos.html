@@ -40,15 +40,11 @@
                               method="POST" class="was-validated" enctype="multipart/form-data">
                             <div class="modal-body">
                                 <div class="mb-3">
-                                    <label for="descripcion">[[#{arbol.descripcion}]]</label>
-                                    <input type="text" class="form-control" name="descripcion" required="true"/>
+                                    <label for="nombre">[[#{arbol.nombre}]]</label>
+                                    <input type="text" class="form-control" name="nombre" required="true"/>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="activo">[[#{arbol.activo}]]</label>
-                                    <input class="form-check-input" type="checkbox" name="activo" id="activo"/>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="imagen">[[#{arbol.rutaImagen}]]</label>
+                                    <label for="imagen">[[#{arbol.imagenArbol}]]</label>
                                     <input class="form-control" type="file" name="imagenFile" onchange="readURL(this);"/>
                                     <img id="blah" src="#" alt="your image" height="200"/>
                                 </div>
@@ -75,15 +71,14 @@
                                 <table class="table table-striped table-hover">
                                     <thead class="table-dark">
                                         <tr><th>#</th>
-                                            <th>[[#{arbol.descripcion}]]</th>
+                                            <th>[[#{arbol.nombre}]]</th>
                                             <th>[[#{arbol.activo}]]</th>
                                             <th></th></tr>
                                     </thead>
                                     <tbody>
                                         <tr th:each="arbol, contador : ${arboles}">
                                             <td>[[${contador.count}]]</td>
-                                            <td>[[${arbol.descripcion}]]</td>
-                                            <td th:text="${arbol.activo} ? 'Activa' : 'Inactiva'" />
+                                            <td>[[${arbol.nombre}]]</td>
                                             <td><a th:href="@{/arbol/eliminar/}+${arbol.idArbol}"
                                                    class="btn btn-danger">
                                                     <i class="fas fa-trash"></i> [[#{accion.eliminar}]]</a>
@@ -121,7 +116,7 @@
                           class="was-validated"                          
                           enctype="multipart/form-data">
                         <input type="hidden" name="idArbol" th:field="*{idArbol}"/>
-                        <input type="hidden" name="rutaImagen" th:field="*{rutaImagen}"/>
+                        <input type="hidden" name="imagenArbol" th:field="*{imagenArbol}"/>
                         <section th:replace="~{arbol/fragmentos :: botonesEditar}"/>
                         <div id=details>
                             <div class="container">
@@ -133,24 +128,16 @@
                                             </div>
                                             <div class="card-body">
                                                 <div class="mb-3">
-                                                    <label for="descripcion">[[#{arbol.descripcion}]]</label>
+                                                    <label for="nombre">[[#{arbol.nombre}]]</label>
                                                     <input type="text" class="form-control" 
-                                                           name="descripcion" th:field="*{descripcion}"
+                                                           name="nombre" th:field="*{nombre}"
                                                            required="true">
-                                                </div>
+                                                </div>                                                
                                                 <div class="mb-3">
-                                                    <label for="activo">[[#{arbol.activo}]]</label>
-                                                    <input class="form-check-input" 
-                                                           type="checkbox" 
-                                                           name="activo" 
-                                                           id="activo"
-                                                           th:field="*{activo}">
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="imagen">[[#{arbol.rutaImagen}]]</label>
+                                                    <label for="imagen">[[#{arbol.imagenArbol}]]</label>
                                                     <input class="form-control" type="file" name="imagenFile"
                                                            onchange="readURL(this);" />
-                                                    <img id="blah" th:src="@{${arbol.rutaImagen}}" alt="your image" height="200"/>
+                                                    <img id="blah" th:src="@{${arbol.imagenArbol}}" alt="your image" height="200"/>
                                                 </div>
                                             </div>
                                         </div>

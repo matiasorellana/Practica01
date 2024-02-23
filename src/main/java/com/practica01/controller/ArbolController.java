@@ -37,11 +37,11 @@ public class ArbolController {
         if (!imagenFile.isEmpty()) {
             //Se requiere guardar una imagen en Firebase Storage
             arbolService.save(arbol);
-            String rutaImagen=
+            String imagenArbol=
                     firebaseStorageService.cargaImagen(
                             imagenFile, "arbol",
                             arbol.getIdArbol());
-            arbol.setRutaImagen(rutaImagen);
+            arbol.setImagenArbol(imagenArbol);
         }
         arbolService.save(arbol);
         return "redirect:/arbol/listado";

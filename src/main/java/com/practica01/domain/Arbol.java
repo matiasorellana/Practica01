@@ -14,9 +14,10 @@ public class Arbol implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_Arbol")
     private Long idArbol;
-    private String descripcion;
-    private String rutaImagen;
-    private boolean activo;
+    private String nombre;
+    private String imagenArbol;
+    private String tipoArbol;
+    private int durezaMadera;
 }
 
 
