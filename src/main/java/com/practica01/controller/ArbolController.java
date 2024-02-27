@@ -42,6 +42,10 @@ public class ArbolController {
                             imagenFile, "arbol",
                             arbol.getIdArbol());
             arbol.setImagenArbol(imagenArbol);
+            
+            
+           
+            
         }
         arbolService.save(arbol);
         return "redirect:/arbol/listado";
